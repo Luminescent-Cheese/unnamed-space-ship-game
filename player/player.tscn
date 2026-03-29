@@ -1,9 +1,48 @@
-[gd_scene load_steps=13 format=3 uid="uid://tscwl54jyc5p"]
+[gd_scene load_steps=22 format=3 uid="uid://tscwl54jyc5p"]
 
 [ext_resource type="Script" uid="uid://bwau1lgs0poan" path="res://player/player.gd" id="1_onrkg"]
 [ext_resource type="Script" uid="uid://muxoy1a80ytq" path="res://player/camerashake.gd" id="2_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://dakljkri48oyk" path="res://player/basic spaceship rotate.png" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://c6k4ppr78xlsj" path="res://player/playerShipRotation.gd" id="4_yw30f"]
+
+[sub_resource type="Curve" id="Curve_hg6s5"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, -24.7191), 0.0, 0.0, 0, 0, Vector2(1, -56.1797), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_rgyib"]
+_data = [Vector2(0, 0.0898877), 0.0, 0.0, 0, 0, Vector2(0.988636, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_hg6s5"]
+offsets = PackedFloat32Array(0.0866667, 0.166667, 1)
+colors = PackedColorArray(0.843137, 0.843137, 0.843137, 0, 0.843184, 0.843184, 0.843184, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_boad6"]
+_data = [Vector2(0.00568181, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.483146), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_rgyib"]
+offsets = PackedFloat32Array(0, 0.986667)
+colors = PackedColorArray(1, 1, 1, 1, 0.372549, 0.372549, 0.372549, 0)
+
+[sub_resource type="Curve" id="Curve_yw30f"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 76.854), 0.0, 0.0, 0, 0, Vector2(1, 44.4944), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_qjkh3"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, -173.034), 0.0, 0.0, 0, 0, Vector2(1, -200), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_g6k8r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.674157), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_boad6"]
+offsets = PackedFloat32Array(0, 0.353333, 0.586667, 0.74, 1)
+colors = PackedColorArray(1, 0.784314, 0, 1, 1, 0.458824, 0, 1, 0.763715, 0.310268, 0, 1, 0.389287, 0.389287, 0.389287, 1, 0.247059, 0.247059, 0.247059, 0)
 
 [sub_resource type="Gradient" id="Gradient_rkbax"]
 offsets = PackedFloat32Array(0, 0.993333)
@@ -60,10 +99,108 @@ animations = [{
 collision_mask = 0
 script = ExtResource("1_onrkg")
 
+[node name="ExtraChargeParticles" type="CPUParticles2D" parent="."]
+rotation = 3.14159
+emitting = false
+amount = 300
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+linear_accel_min = 5.0
+linear_accel_max = 10.0
+linear_accel_curve = SubResource("Curve_hg6s5")
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 20.0
+scale_amount_max = 50.0
+scale_amount_curve = SubResource("Curve_rgyib")
+color = Color(0.74558, 0.74558, 0.74558, 1)
+color_ramp = SubResource("Gradient_hg6s5")
+
+[node name="ExtraChargeParticles2" type="CPUParticles2D" parent="."]
+position = Vector2(200, 0)
+rotation = 3.14159
+emitting = false
+amount = 300
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+linear_accel_min = 5.0
+linear_accel_max = 10.0
+linear_accel_curve = SubResource("Curve_hg6s5")
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 20.0
+scale_amount_max = 50.0
+scale_amount_curve = SubResource("Curve_rgyib")
+color = Color(0.74558, 0.74558, 0.74558, 1)
+color_ramp = SubResource("Gradient_hg6s5")
+
+[node name="ChargeParticles" type="CPUParticles2D" parent="."]
+position = Vector2(-61, 0)
+rotation = -3.14159
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 0.7
+emission_shape = 1
+emission_sphere_radius = 30.0
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+angular_velocity_max = 10.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 10.0
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_boad6")
+color = Color(0.447059, 0.913725, 0.913725, 1)
+color_ramp = SubResource("Gradient_rgyib")
+
+[node name="Explosion" type="CPUParticles2D" parent="."]
+rotation = 1.5708
+scale = Vector2(4, 4)
+emitting = false
+amount = 100
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 15.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 120.0
+angular_velocity_min = 5.0
+angular_velocity_max = 10.0
+angular_velocity_curve = SubResource("Curve_yw30f")
+linear_accel_min = 1.0
+linear_accel_max = 2.0
+linear_accel_curve = SubResource("Curve_qjkh3")
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 10.0
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_g6k8r")
+color_ramp = SubResource("Gradient_boad6")
+
 [node name="engine particles" type="CPUParticles2D" parent="."]
 position = Vector2(-54, -2)
 rotation = 1.5708
 scale = Vector2(4, 4)
+emitting = false
 amount = 100
 lifetime = 0.5
 explosiveness = 0.07

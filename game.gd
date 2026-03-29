@@ -11,11 +11,8 @@ var playerPosition
 var activateScreenshake = true
 
 func _ready():
-	placeEnemy(0,0)
-	placeEnemy(500,500)
-	placeEnemy(-500,-500)
-	placeEnemy(-500,500)
-	placeEnemy(500,-500)
+	for i in 20:
+		placeEnemy(0,0)
 
 func _physics_process(delta: float):
 	#Enemies use this for "pathfinding"
